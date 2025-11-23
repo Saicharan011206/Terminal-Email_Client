@@ -1,12 +1,9 @@
 import pwinput
 import smtplib
-def send_email():
+def send_email(user_email, password):
     print("=== Sending Email ===")
-    sender_email = input("Enter your email address: ").strip()
     receiver_email = input("Enter recipient's email address: ").strip()
-    password = pwinput.pwinput(prompt="Enter your app password: ", mask="*")
     subject = input("Enter subject: ")
-
     # Initial email body entry
     while True:
         print("Enter your email body (type 'END' on a new line to finish):")
@@ -43,8 +40,8 @@ def send_email():
     try:
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
-            server.login(sender_email, password)
-            server.sendmail(sender_email, receiver_email, message)
+            server.login(user_email, password)
+            server.sendmail(user_email, receiver_email, message)
         print("Email sent successfully!")
     except Exception as e:
         print(f"Failed to send email: {e}")
