@@ -1,7 +1,7 @@
 print("Welcome to your email_client!")
 from login_utils import login, save_last_user, load_last_user
 from send_email import send_email
-# from receive_email import receive_email  # Uncomment when implemented.
+from receiving_emails import receive_email
 import sys
 
 def main_menu(user_email, password):
